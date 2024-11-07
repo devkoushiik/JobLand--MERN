@@ -13,7 +13,10 @@ import {
   Stats,
 } from "./pages";
 
+// actions
 import { action as registerAction } from "./pages/Register";
+import { action as loginAction } from "./pages/Login";
+import { loader as dashboardLoader } from "./pages/DashboardLayout";
 
 // this will run for all routes so placement is important here.
 export const checkDefaultTheme = () => {
@@ -36,10 +39,11 @@ const router = createBrowserRouter([
         element: <Register />,
         action: registerAction,
       },
-      { path: "login", element: <Login /> },
+      { path: "login", element: <Login />, action: loginAction },
       {
         path: "dashboard",
         element: <DashboardLayout />,
+        loader: dashboardLoader,
         children: [
           { index: true, element: <AddJob /> },
           { path: "stats", element: <Stats /> },
