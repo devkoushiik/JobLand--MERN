@@ -9,8 +9,8 @@ const NavLinks = () => {
     <div className="nav-links">
       {links.map((link) => {
         const { text, path, icon } = link;
-         const { role } = user;
-         if (role !== "admin" && path === "admin") return;
+        const { role } = user;
+        if (role !== "admin" && path === "admin") return;
         return (
           <NavLink
             to={path}

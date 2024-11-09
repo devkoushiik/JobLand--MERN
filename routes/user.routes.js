@@ -7,6 +7,8 @@ import {
   updateUser,
 } from "../controllers/user.controller.js";
 import { authorizePermissions } from "../middlewares/authMiddleware.js";
+import upload from "../middlewares/multerMiddleware.js";
+import { validateUpdateUserInput } from "../middlewares/validationMiddleware.js";
 
 router.get("/current-user", getCurrentUser);
 router.get(
@@ -14,5 +16,10 @@ router.get(
   authorizePermissions("admin"),
   getApplicationStats
 );
-router.patch("/update-user", updateUser);
+router.patch(
+  "/update-user",
+  upload.single("avatar"),
+  validateUpdateUserInput,
+  updateUser
+);
 export default router;
