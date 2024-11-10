@@ -9,8 +9,8 @@ const MONGO_URI =
 
 try {
   await mongoose.connect(MONGO_URI);
-  // const user = await User.findOne({ email: 'john@gmail.com' });
-  const user = await User.findOne({ email: "test@test.com" });
+  const user = await User.findOne({ email: "koushik@gmail.com" });
+  // const user = await User.findOne({ email: "test@test.com" });
 
   const jsonJobs = JSON.parse(
     await readFile(new URL("./mockData.json", import.meta.url))
