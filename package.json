@@ -1,7 +1,7 @@
 {
   "name": "jobland",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "setup-project": "npm i && cd client && npm i",
