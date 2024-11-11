@@ -23,7 +23,7 @@ const Login = () => {
   const loginDemoUser = async () => {
     const data = {
       email: "test@test.com",
-      password: "secret123",
+      password: "1234",
     };
     try {
       await customFetch.post("/auth/login", data);
