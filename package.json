@@ -1,10 +1,11 @@
 {
-  "name": "x",
+  "name": "jobland",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "setup-project": "npm i && cd client && npm i",
+    "setup-production-app": "npm i && cd client && npm i && npm run build",
     "server": "nodemon server",
     "client": "cd client && npm run dev",
     "dev": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\""
