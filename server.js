@@ -13,6 +13,8 @@ import authenticateUser from "./middlewares/authMiddleware.js";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.routes.js";
 import cloudinary from "cloudinary";
+import helmet from "helmet";
+import mongoSanitize from "express-mongo-sanitize";
 // public
 import { dirname } from "path";
 import { fileURLToPath } from "url";
@@ -34,12 +36,10 @@ app.use(express.static(path.resolve(__dirname, "./client/dist")));
 app.use(cookieParser());
 app.use(express.json());
 
+
+app.use(helmet());
+app.use(mongoSanitize());
 // routes
-
-app.get("/api/v1/test", (req, res) => {
-  res.json({ msg: "test route" });
-});
-
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
