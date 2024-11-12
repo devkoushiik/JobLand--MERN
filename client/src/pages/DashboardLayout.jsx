@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Wrapper from "../assets/wrappers/Dashboard";
 import { BigSidebar, Loading, Navbar, SmallSidebar } from "../components";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { checkDefaultTheme } from "../App";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
@@ -32,6 +32,7 @@ export const loader = (queryClient) => async () => {
 const DashboardContext = createContext();
 
 const DashboardLayout = ({ queryClient }) => {
+  const [isAuthError, setIsAuthError] = useState(false);
   const { user } = useQuery(userQuery)?.data;
   const isPageLoading = useNavigation().state === "loading";
   const navigate = useNavigate();
@@ -57,6 +58,23 @@ const DashboardLayout = ({ queryClient }) => {
     toast.success("logout successful");
   };
 
+  // axios interceptors
+  customFetch.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      if (error?.response?.status === 401) {
+        setIsAuthError(true);
+      }
+      return Promise.reject(error);
+    }
+  );
+  // useEffect for authCheck
+  useEffect(() => {
+    if (!isAuthError) return;
+    logoutUser();
+  }, [isAuthError]);
   return (
     <DashboardContext.Provider
       value={{
