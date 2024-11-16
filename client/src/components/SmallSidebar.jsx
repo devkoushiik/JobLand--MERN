@@ -5,7 +5,15 @@ import Logo from "./Logo";
 import { NavLink } from "react-router-dom";
 
 import { useDashboardContext } from "../pages/DashboardLayout";
-import links from "../utils/links";
+// import links from "../utils/links";
+// render error this fix is temporary
+const links = [
+  { text: "add job", path: ".", icon: <FaWpforms /> },
+  { text: "all jobs", path: "all-jobs", icon: <MdQueryStats /> },
+  { text: "stats", path: "stats", icon: <IoBarChartSharp /> },
+  { text: "profile", path: "profile", icon: <ImProfile /> },
+  { text: "admin", path: "admin", icon: <MdAdminPanelSettings /> },
+];
 
 
 const SmallSidebar = () => {
