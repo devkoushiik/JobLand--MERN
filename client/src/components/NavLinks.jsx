@@ -1,6 +1,7 @@
 import { useDashboardContext } from "../pages/DashboardLayout";
-import links from "../utils/links";
+
 import { NavLink } from "react-router-dom";
+import links from "../utils/Links";
 
 const NavLinks = () => {
   const { user, toggleSidebar } = useDashboardContext();
