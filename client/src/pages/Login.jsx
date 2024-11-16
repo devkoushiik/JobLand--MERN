@@ -41,7 +41,7 @@ const Login = () => {
       <Form method="POST" className="form">
         <LogoResister />
         <h4 className="text-xl">Login</h4>
-        <FormRow type="email" name="email" defaultValue="koushik@gmail.com" />
+        <FormRow type="email" name="email" defaultValue="jack@gmail.com" />
         <FormRow type="password" name="password" defaultValue="1234" />
         <SubmitBtn formBtn />
         <button type="button" className="btn btn-block" onClick={loginDemoUser}>
